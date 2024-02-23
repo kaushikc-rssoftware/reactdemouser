@@ -1,4 +1,5 @@
 import { ReactElement, createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const AuthContext = createContext({isLoggedIn:false, token:'',userName:'', login:(s:string, t:string)=>{}, logout:()=>{}});
@@ -9,6 +10,7 @@ function AuthProvider({children}:LoggedUser) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState('');
   const[userName, setUserName]=useState('');
+  
   const login = (jwtToken:string, username:string) => {
     setIsLoggedIn(true);
     setUserName(username);
@@ -18,6 +20,7 @@ function AuthProvider({children}:LoggedUser) {
   const logout = () => {
     setIsLoggedIn(false);    
     setToken('');
+    
   };
 
   const value = {

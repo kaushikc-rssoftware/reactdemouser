@@ -1,15 +1,16 @@
 import axios, { CanceledError } from "axios";
 import { useContext, useEffect, useState } from "react";
 import Spinner from "./Spinner";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import {Employee as User} from "../Model/User";
 import { AuthContext } from "../Context/Auth";
-
+import Swal from 'sweetalert2'
 const stopfetch=()=>{console.log("stop fetching")}
 
 const MyList=()=>{
   const { isLoggedIn, token, userName } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
     const repoLink="https://jsonplaceholder.typicode.com/users";
     const controller = new AbortController();
     let src:string="https://img.freepik.com/free-vector/mysterious-gangster-character-illustration_23-";
@@ -21,6 +22,9 @@ const MyList=()=>{
         setUsers(users.filter(user=>user.id!==id));
         axios.delete(repoLink+"/"+id, {
           headers: { 'Authorization': + token }
+          })
+          .then(resp=>{
+            Swal.fire('Success', 'User has been deleted.','success')
           })
         .catch(err=>{
             setError(err.message);setUsers(originalUsers);
@@ -37,12 +41,21 @@ const MyList=()=>{
     useEffect(()=>{
         
         setLoading(true);
+        
+        let newuser = location.state;
+        console.log(newuser)
         axios.get<User[]>(repoLink,{signal:controller.signal,
           headers: { 'Authorization': + token }
           })
         .then(response=>{
             console.log(response.data);
-            setUsers(response.data);
+            if(newuser!=null)
+            {
+              
+              setUsers([...response.data, {...newuser, userid:"uname"+newuser.userid,id:response.data.length+1}]);
+            }
+            else 
+            setUsers([...response.data]);
         })
         .catch(err=>{console.log(err); 
             if(err instanceof CanceledError) return;

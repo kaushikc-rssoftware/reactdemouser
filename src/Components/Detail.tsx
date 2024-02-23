@@ -5,13 +5,14 @@ import {User} from "../Model/User";
 import { FieldValues, useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Auth";
+import Swal from "sweetalert2";
   export function Detail() {
  const {id}= useParams();
  const [isNewForm, setIsNewForm]=useState(false);
  const { isLoggedIn, token, userName } = useContext(AuthContext);
  const [originalUser,setOriginalUser]=useState<User>();
  const {register, handleSubmit, formState, setValue,reset }=useForm();
- console.log(formState.errors)
+ console.log("kk"+formState.errors)
  let src:string="https://img.freepik.com/free-vector/mysterious-gangster-character-illustration_23-"+id+".jpg";
  const[isLoading, setLoading]=useState(false);
  const [user, setUser]=useState<User>();
@@ -41,7 +42,7 @@ useEffect(()=>{
             setOriginalUser(response.data);
         
         })
-        .catch(err=>{console.log(err); 
+        .catch(err=>{console.log("ll"+err); 
             if(err instanceof CanceledError) return;
             setError(err.message)
         }).finally(()=>{setLoading(false);});
@@ -51,13 +52,19 @@ useEffect(()=>{
     
 },[]);
 useEffect(()=>{
+    
     if(id=="new")
     {
+        console.log("bvghvgn");
+        setOriginalUser({name:'',email:'', phone:'', website:'',username:'',id:-1})
+        setUser({name:'',email:'', phone:'', website:'',username:'',id:-1});
+        reset({user:user});
         setIsNewForm(true);
-        setOriginalUser({name:'',email:'', phone:'', website:''})
-        setUser({...originalUser});
+        
+        
+        
     }
-})
+},[id])
 const goList=()=>{
 navigate("/reactdemouser/");
 }
@@ -65,7 +72,7 @@ const onSubmit=(data:FieldValues)=>{
    if(!isNewForm)
    { 
     axios.patch(repoLink+"/"+id, user,{headers: { 'Authorization': + token }})
-    .then(resp=> {window.alert("User is updated."); navigate("/reactdemouser/",{replace:true});})
+    .then(resp=> {Swal.fire('Success', 'User has been saved','success').then(r=>{navigate("/reactdemouser/",{replace:true});});})
     .catch(error=>{window.alert(error.message); setUser({...originalUser});})
     /*console.log(user);*/
    }
@@ -73,8 +80,8 @@ const onSubmit=(data:FieldValues)=>{
    {
     setOriginalUser({name:'',email:'', phone:'', website:''})
     axios.post(repoLink, user,{headers: { 'Authorization': + token }})
-    .then(resp=> {window.alert("User is saved."); navigate("/reactdemouser/",{replace:true});})
-    .catch(error=>{window.alert(error.message);setUser({...originalUser});})
+    .then(resp=> {Swal.fire('Success', 'User has been saved','success').then(r=>{ setUser({...user}); navigate("/reactdemouser/",{replace:true, state:user});});})
+    .catch(error=>{ Swal.fire('Failure', error.message,'error');setUser({...originalUser});})
    }
 
 }
@@ -98,7 +105,7 @@ const onSubmit=(data:FieldValues)=>{
                             htmlFor="name"
                             className="block text-sm font-semibold text-white-800 float-start"
                         >
-                            Name
+                            Name *
                         </label>
                         <input
                             id="name"
@@ -106,7 +113,7 @@ const onSubmit=(data:FieldValues)=>{
                             type="text"
                            {...register('name',{required:true, minLength:3})}
                           
-                            onChange={(event)=>{setUser({...user, name: event.target.value }); setValue('name',event.target.value)}}
+                            onChange={(event)=>{setUser({...user, name: event.target.value });}}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                         {formState.errors.name?.type==='required' && <div className="float-start text-orange-500 mb-2">Name field is required</div>}
@@ -118,7 +125,7 @@ const onSubmit=(data:FieldValues)=>{
                             htmlFor="phone"
                             className="block text-sm font-semibold text-white-800 float-start"
                         >
-                            Phone
+                            Phone *
                         </label>
                         <input
                             id="phone"
@@ -126,7 +133,7 @@ const onSubmit=(data:FieldValues)=>{
                             type="text"
                             
                             {...register('phone',{required:true, minLength:10,})}
-                            onChange={(event)=>{setUser({...user, phone: event.target.value });setValue('phone',event.target.value);}}
+                            onChange={(event)=>{setUser({...user, phone: event.target.value });}}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
 
@@ -140,18 +147,23 @@ const onSubmit=(data:FieldValues)=>{
                             htmlFor="email"
                             className="block text-sm font-semibold text-white-800 float-start"
                         >
-                            EMail
+                            E-Mail *
                         </label>
                         <input
                             id="email"
                             value={user?.email}
-                            type="email"
-                            {...register('email',{required:true, minLength:3})}
+                            type="text"
+                            {...register('email',{required:true, minLength:3,pattern: {
+                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                message: 'Invalid email format',
+                              }
+                            })}
                             onChange={(event)=>setUser({...user, email: event.target.value })}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                         {formState.errors.email?.type==='required' && <div className="float-start text-orange-500 mb-2">Email field is required</div>}
                         {formState.errors.email?.type==='minLength' && <div className="float-start text-orange-500 mb-2">Email field should be atleast 3 chars.</div>}
+                        {formState.errors.email?.type==='pattern' && <div className="float-start text-orange-500 mb-2">Invalid email id provided.</div>}
         </div>
         <div className="mb-2">
             <br/>
@@ -159,19 +171,23 @@ const onSubmit=(data:FieldValues)=>{
                             htmlFor="website"
                             className="block text-sm font-semibold text-white-800 float-start"
                         >
-                            Website
+                            Website *
                         </label>
                         <input
                             id="website"
                             value={user?.website}
                             type="text"
-                            {...register('website',{required:true, minLength:3})}
-                            onChange={(event)=>setUser({...user, website: event.target.value })}
+                            {...register('website',{required:true, minLength:3, pattern: {
+                                value: /http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?$/,
+                                message: 'Invalid email format',
+                              }})}
+                            onChange={(event)=>setUser({...user, website: event.target.value,  })}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             
                         />
                         {formState.errors.website?.type==='required' && <div className="float-start text-orange-500 mb-2">Website field is required</div>}
                         {formState.errors.website?.type==='minLength' && <div className="float-start text-orange-500 mb-2">Website field should be atleast 3 chars.</div>}
+                        {formState.errors.website?.type==='pattern' && <div className="float-start text-orange-500 mb-2">Proper website address required.</div>}
         </div>
         <br/>
         

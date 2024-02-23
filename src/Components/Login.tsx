@@ -1,12 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Context/Auth";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function Login() {
 
     const userRef=useRef<HTMLInputElement|null>(null);
     const passwordRef=useRef<HTMLInputElement|null>(null);
     const errRef=useRef<HTMLParagraphElement>(null);
-
+    const navigate=useNavigate();
     const[userName,setUserName]=useState('');
     const[password,setPassword]=useState('');
     const[errMsg,setErrMsg]=useState('');
@@ -27,6 +28,7 @@ axios.post(loginRepoLink, {"email":userName,"password":password})
         if(resp.data["access_token"]!=="")
         {
             login(resp.data["access_token"],userName);
+            navigate("/reactdemouser/")
         }
         else
         {
