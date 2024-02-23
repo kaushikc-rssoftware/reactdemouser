@@ -60,8 +60,10 @@ const MyList=()=>{
             <div className='max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full'>
               <div className='pb-8 m-8'>
                 <p className='text-4xl font-bold inline border-b-4 border-gray-500'>
-    Title            </p>
-                <p className='py-6'>subtitle</p>
+    Employee List            </p>
+                <p className='py-6'>While email may be the most popular form of workplace communication, using text messages to communicate with employees is becoming increasingly popular. Text message employee communications have several benefits over email. These include a fast and easy-to-use interface, lower cost for both you and your employees, and increased employee engagement.
+
+Communicating with employees via text is the latest internal communications best practice for a dispersed, modern workplace. But it doesn’t come without its rules.</p>
                 {error && <div className="float-start"><p className="text-orange-600">{error}</p></div>}
 
                 <div className="float-end text-white">
