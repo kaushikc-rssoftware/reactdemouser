@@ -2,7 +2,7 @@ import axios, { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 import { Navigate, useNavigate } from "react-router-dom";
-import User from "../Model/User";
+import {Employee as User} from "../Model/User";
 
 
 const stopfetch=()=>{console.log("stop fetching")}

@@ -1,4 +1,4 @@
-interface User{
+export interface User{
     id?:number;
     name?:string;
     email?:string;
@@ -6,4 +6,11 @@ interface User{
     website?:string;
     username?:string;
 }
-export default User;
+export interface Employee{
+    id:number;
+    name:string;
+    email:string;
+    phone:string;
+    website:string;
+    username:string;
+}

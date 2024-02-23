@@ -1,7 +1,7 @@
 import axios, { CanceledError } from "axios";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import User from "../Model/User";
+import {User} from "../Model/User";
 import { FieldValues, useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
   export function Detail() {
