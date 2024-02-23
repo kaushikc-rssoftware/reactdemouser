@@ -1,13 +1,14 @@
 import axios, { CanceledError } from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Spinner from "./Spinner";
 import { Navigate, useNavigate } from "react-router-dom";
 import {Employee as User} from "../Model/User";
-
+import { AuthContext } from "../Context/Auth";
 
 const stopfetch=()=>{console.log("stop fetching")}
 
 const MyList=()=>{
+  const { isLoggedIn, token, userName } = useContext(AuthContext);
     const navigate = useNavigate();
     const repoLink="https://jsonplaceholder.typicode.com/users";
     const controller = new AbortController();
@@ -18,7 +19,9 @@ const MyList=()=>{
     const deleteUser=(id:number)=>{
         const originalUsers=[...users];
         setUsers(users.filter(user=>user.id!==id));
-        axios.delete(repoLink+"/"+id)
+        axios.delete(repoLink+"/"+id, {
+          headers: { 'Authorization': + token }
+          })
         .catch(err=>{
             setError(err.message);setUsers(originalUsers);
         });
@@ -34,7 +37,9 @@ const MyList=()=>{
     useEffect(()=>{
         
         setLoading(true);
-        axios.get<User[]>(repoLink,{signal:controller.signal})
+        axios.get<User[]>(repoLink,{signal:controller.signal,
+          headers: { 'Authorization': + token }
+          })
         .then(response=>{
             console.log(response.data);
             setUsers(response.data);

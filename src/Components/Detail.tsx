@@ -1,13 +1,14 @@
 import axios, { CanceledError } from "axios";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import {User} from "../Model/User";
 import { FieldValues, useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/Auth";
   export function Detail() {
  const {id}= useParams();
  const [isNewForm, setIsNewForm]=useState(false);
-
+ const { isLoggedIn, token, userName } = useContext(AuthContext);
  const [originalUser,setOriginalUser]=useState<User>();
  const {register, handleSubmit, formState, setValue,reset }=useForm();
  console.log(formState.errors)
@@ -31,7 +32,9 @@ useEffect(()=>{
     if(!isNewForm)
     {
         setLoading(true);
-        axios.get<User>(repoLink+"/"+id,{signal:controller.signal})
+        axios.get<User>(repoLink+"/"+id,{signal:controller.signal, 
+            headers: { 'Authorization': + token }
+            })
         .then(response=>{
             //console.log(response.data);
             setUser(response.data);
@@ -51,6 +54,8 @@ useEffect(()=>{
     if(id=="new")
     {
         setIsNewForm(true);
+        setOriginalUser({name:'',email:'', phone:'', website:''})
+        setUser({...originalUser});
     }
 })
 const goList=()=>{
@@ -59,7 +64,7 @@ navigate("/reactdemouser/");
 const onSubmit=(data:FieldValues)=>{
    if(!isNewForm)
    { 
-    axios.patch(repoLink+"/"+id, user)
+    axios.patch(repoLink+"/"+id, user,{headers: { 'Authorization': + token }})
     .then(resp=> {window.alert("User is updated."); navigate("/reactdemouser/",{replace:true});})
     .catch(error=>{window.alert(error.message); setUser({...originalUser});})
     /*console.log(user);*/
@@ -67,7 +72,7 @@ const onSubmit=(data:FieldValues)=>{
    else
    {
     setOriginalUser({name:'',email:'', phone:'', website:''})
-    axios.post(repoLink, user)
+    axios.post(repoLink, user,{headers: { 'Authorization': + token }})
     .then(resp=> {window.alert("User is saved."); navigate("/reactdemouser/",{replace:true});})
     .catch(error=>{window.alert(error.message);setUser({...originalUser});})
    }
@@ -80,7 +85,7 @@ const onSubmit=(data:FieldValues)=>{
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     
     <a href="#">
-        <img className="rounded-t-lg" src={src} alt="" />
+        {!isNewForm && <img className="rounded-t-lg" src={src} alt="" />}
     </a>
     
     <div className="p-5">
