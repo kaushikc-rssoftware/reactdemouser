@@ -22,8 +22,8 @@ function App() {
   </div>
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div className="text-sm lg:flex-grow">
-    <Link className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' to="/">Home</Link>
-      <Link className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' to="/detail/new">Detail</Link>
+    <Link className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' to="/reactdemouser/">Home</Link>
+      <Link className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' to="/reactdemouser/detail/new">New</Link>
       
     </div>
     <div>
@@ -34,8 +34,8 @@ function App() {
     
     <Routes>
       
-        <Route index path="/" element={<MyList />} />
-        <Route  path="/detail/:id" element={<Detail />} />
+        <Route index path="/reactdemouser/" element={<MyList />} />
+        <Route  path="/reactdemouser/detail/:id" element={<Detail />} />
         
       </Routes>
     

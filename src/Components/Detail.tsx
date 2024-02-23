@@ -54,21 +54,21 @@ useEffect(()=>{
     }
 })
 const goList=()=>{
-navigate("/");
+navigate("/reactdemouser/");
 }
 const onSubmit=(data:FieldValues)=>{
    if(!isNewForm)
    { 
     axios.patch(repoLink+"/"+id, user)
-    .then(resp=> {window.alert("User is updated."); navigate("/",{replace:true});})
+    .then(resp=> {window.alert("User is updated."); navigate("/reactdemouser/",{replace:true});})
     .catch(error=>{window.alert(error.message); setUser({...originalUser});})
     /*console.log(user);*/
    }
    else
    {
     setOriginalUser({name:'',email:'', phone:'', website:''})
-    axios.post(repoLink+"x", user)
-    .then(resp=> {window.alert("User is saved."); navigate("/",{replace:true});})
+    axios.post(repoLink, user)
+    .then(resp=> {window.alert("User is saved."); navigate("/reactdemouser/",{replace:true});})
     .catch(error=>{window.alert(error.message);setUser({...originalUser});})
    }
 

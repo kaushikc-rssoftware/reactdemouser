@@ -24,11 +24,11 @@ const MyList=()=>{
         });
     }
     const goDetail=(id:number)=>{
-        navigate('/detail/'+id);
+        navigate('/reactdemouser/detail/'+id);
         
     }
     const goCreate=()=>{
-        navigate('/detail/new');
+        navigate('/reactdemouser/detail/new');
         
     }
     useEffect(()=>{
