@@ -1,17 +1,14 @@
 import axios, { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
+import { Navigate, useNavigate } from "react-router-dom";
+import User from "../Model/User";
 
-interface User{
-    id:number;
-    name:string;
-    email:string;
-    phone:string;
-    website:string;
-    username:string;
-}
+
 const stopfetch=()=>{console.log("stop fetching")}
-const MyList=({category}:{category:string})=>{
+
+const MyList=()=>{
+    const navigate = useNavigate();
     const repoLink="https://jsonplaceholder.typicode.com/users";
     const controller = new AbortController();
     let src:string="https://img.freepik.com/free-vector/mysterious-gangster-character-illustration_23-";
@@ -26,8 +23,16 @@ const MyList=({category}:{category:string})=>{
             setError(err.message);setUsers(originalUsers);
         });
     }
+    const goDetail=(id:number)=>{
+        navigate('/detail/'+id);
+        
+    }
+    const goCreate=()=>{
+        navigate('/detail/new');
+        
+    }
     useEffect(()=>{
-        console.log("fetching users--", category);
+        
         setLoading(true);
         axios.get<User[]>(repoLink,{signal:controller.signal})
         .then(response=>{
@@ -40,7 +45,7 @@ const MyList=({category}:{category:string})=>{
         }).finally(()=>{setLoading(false);});
         
        //return ()=>controller.abort(); 
-    },[category]);
+    },[]);
     return (<>
         
         <div
@@ -55,7 +60,7 @@ const MyList=({category}:{category:string})=>{
                 {error && <div className="float-start"><p className="text-orange-600">{error}</p></div>}
 
                 <div className="float-end text-white">
-                <button type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >CREATE</button>
+                <button type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={goCreate}>CREATE</button>
 
                 </div>
                 {isLoading && <Spinner />}
@@ -90,9 +95,9 @@ const MyList=({category}:{category:string})=>{
                     <div className='flex items-center justify-center'>
                       <button
                         className='w-1/2 px-6 py-3 m-4 bg-cyan-500 duration-200 hover:bg-cyan-600'
-                        onClick={() => window.open("http://"+user.website, '_blank')}
+                        onClick={() =>goDetail(user.id)}
                       >
-                        WebSite
+                        Update
                       </button>
                      
                       <button
