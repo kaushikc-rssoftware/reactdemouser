@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment"
+    android:background="@color/colorTitle">
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_home"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/merchantlogo"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/merchant_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Merchant Name"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/merchant_name_tv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simanjit Nayak"
+                android:layout_below="@id/merchant_name_tv"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/customer_name_tv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Mr. Bridie Kessler"
+                android:layout_below="@id/merchant_name_tv_value"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/customer_email_tv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kesxxx@123.gmail.com"
+                android:layout_below="@id/customer_name_tv_value"
+                android:textColor="@color/colorgrey"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/customer_ph_tv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="phone: +6565449866"
+                android:layout_below="@id/customer_email_tv_value"
+                android:textSize="14dp"
+                android:textColor="@color/colorgrey"/>
+
+                <TextView
+                    android:id="@+id/merchant_header_tv_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="04, DN Block, \nWall Street, New York City, \nNY-100001, USA"
+                    android:layout_below="@id/customer_ph_tv_value"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorgrey"
+                    android:background="@color/colorlightblue"
+                    android:layout_marginTop="15dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"/>
+
+            <TableLayout
+                android:id="@+id/table_heading_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/merchant_header_tv_value"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorToolbar"
+                android:scrollbars="horizontal">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|center_vertical"
+                        android:textSize="16dp"
+                        android:text="Items"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingStart="5dp"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_column="1"
+                        android:layout_weight="1"
+                        android:text="Quantity"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|center_vertical"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingStart="5dp"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="Price"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|center_vertical"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingStart="5dp"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_column="3"
+                        android:layout_weight="1"
+                        android:text="Tax"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|center_vertical"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingStart="5dp"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_column="4"
+                        android:layout_weight="1"
+                        android:text="Amount"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|center_vertical"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingStart="5dp"/>
+                </TableRow>
+            </TableLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/item_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/table_heading_layout"
+                android:nestedScrollingEnabled="false"/>
+
+            <TableLayout
+                android:id="@+id/table_heading1_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_recyclerView"
+                android:scrollbars="horizontal"
+                android:weightSum="5">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="right|center_vertical"
+                        android:textSize="16dp"
+                        android:text="Total Amount"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingEnd="5dp"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_column="1"
+                        android:layout_weight="1"
+                        android:text="6160"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left|center_vertical"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_grey_transparent_outline"
+                        android:paddingStart="5dp"/>
+
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/merchant_footer_tv_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E.g. Please pay your due invoice by dd/mm/yyyy"
+                android:layout_below="@id/table_heading1_layout"
+                android:textSize="12dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:textColor="@color/colorgrey"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/merchant_footer_tv_value"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="pay now"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/colorButton"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="20dp"/>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

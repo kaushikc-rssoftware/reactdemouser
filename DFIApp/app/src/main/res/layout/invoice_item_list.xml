@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+        android:id="@+id/table_heading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/invoice_item_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_grey_transparent_outline"
+                android:gravity="left|center_vertical"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:paddingStart="5dp"
+                />
+
+            <TextView
+                android:id="@+id/invoice_item_quantity"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_grey_transparent_outline"
+                android:gravity="left|center_vertical"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:paddingStart="5dp"/>
+
+            <TextView
+                android:id="@+id/invoice_item_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_grey_transparent_outline"
+                android:baselineAligned="false"
+                android:gravity="left|center_vertical"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:paddingStart="5dp"/>
+
+            <TextView
+                android:id="@+id/invoice_item_tax"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_grey_transparent_outline"
+                android:baselineAligned="false"
+                android:gravity="left|center_vertical"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:paddingStart="5dp"/>
+
+            <TextView
+                android:id="@+id/invoice_item_amount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_grey_transparent_outline"
+                android:baselineAligned="false"
+                android:gravity="left|center_vertical"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:paddingStart="5dp"/>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

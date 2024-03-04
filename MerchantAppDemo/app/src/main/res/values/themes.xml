@@ -1,0 +1,66 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <!--    <style name="Theme.MerchantAppDemo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
+    <style name="Theme.MerchantAppDemo" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+<!--        <item name="colorPrimaryVariant">@color/white</item>-->
+        <item name="colorOnPrimary">@color/black</item>
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="customTextInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
+
+
+    </style>
+
+    <style name="Theme.MerchantAppDemo.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="navigationViewStyle">@style/NavigationView</item>
+    </style>
+
+    <style name="NavigationView" parent="Widget.Design.NavigationView">
+        <item name="android:background">@color/colorDarkBlue</item>
+    </style>
+
+    <style name="Theme.MerchantAppDemo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="colorPrimary">@color/white</item> <!-- Color of the toolbar background -->
+        <item name="colorControlNormal">@color/black</item>  <!-- Color of the hamburger menu icon -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Color of the title text -->
+    </style>
+
+    <style name="Theme.MerchantAppDemo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ThemeOverlay.SearchView" parent="">
+        <!-- Text color -->
+        <item name="android:editTextColor">@color/black</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:colorControlActivated">@color/black</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="roundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="CustomThemeOverlay_MaterialCalendar_Fullscreen" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <!-- just override the colors used in the default style -->
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

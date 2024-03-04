@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Central Infrastructure</string>
+
+    <string name="login">Login</string>
+    <string name="login_hint">Enter Username</string>
+    <string name="login_pwd">Enter Password</string>
+    <string name="forget_pwd">Forget Password?</string>
+    <string name="signup_text">Don\'t have an account? <font color='#2276f2'>Sign Up</font> </string>
+    <string name="remember_me">Remember Me</string>
+    <string name="title_activity_dashbord">Dashbord</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Menu</string>
+    <string name="nav_header_subtitle">Merchant Business Name</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="text_hint"><font color='#E1E1E1'>Type Here</font></string>
+    <string name="text_hint_search_view"><font color='#B3B3B3' size="13">Type Here</font></string>
+
+    <string name="menu_home">Dashboard</string>
+    <string name="menu_manage_templates">Manage Templates</string>
+    <string name="menu_create_invoice">Create Invoice</string>
+    <string name="menu_create_template">Create Template</string>
+    <string name="menu_view_invoice">Invoice</string>
+    <string name="menu_reports">Reports</string>
+    <string name="menu_logout">Log Out</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="extended_fab_label">Create Template</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="report_status_pending"><font color='#e84700'>Payment Pending</font></string>
+    <string name="report_status_done"><font color='#60bc65'>Paid in full</font></string>
+    <string name="report_status_dispatch_pending"><font color='#B3B3B3'>Yet to be dispatched</font></string>
+    <string name="report_status_partial_pending"><font color='#f9b23c'>Partial Payment</font></string>
+</resources>

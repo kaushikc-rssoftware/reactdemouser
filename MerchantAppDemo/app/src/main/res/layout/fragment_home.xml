@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragment"
+    android:background="@color/white">
+
+    <ScrollView
+        android:id="@+id/scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/merchant_profile_cv"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                app:cardBackgroundColor="@color/colorBlue"
+                app:cardCornerRadius="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/profile_pic"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/dash_profile_img"
+                        android:layout_marginStart="15dp"
+                        android:layout_centerVertical="true"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/profile_pic"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome"
+                        android:textColor="@color/white"
+                         android:textSize="22dp"/>
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Brown Smith"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"/>
+
+                        <TextView
+                            android:id="@+id/bussiness_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Globe Enterprise"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/date_range_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/merchant_profile_cv"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/home_calender"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/dash_cal"/>
+
+                <TextView
+                    android:id="@+id/date_filter_home_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorGreyText"
+                    android:layout_marginStart="10dp"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/invoice_dispatch_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_range_ll"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="18dp">
+
+                <ImageView
+                    android:id="@+id/invoice_dispatch_iv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/invoice_dispatch" />
+                <TextView
+                    android:id="@+id/invoice_dispatch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Invoices Sent"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/invoice_dispatch_iv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_iv"/>
+
+                <TextView
+                    android:id="@+id/number_invoice_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of Invoice"
+                android:textSize="11dp"
+                    android:layout_marginStart="10dp"
+                android:textColor="@color/colorBlueText"
+                    app:layout_constraintStart_toEndOf="@id/invoice_dispatch_iv"
+                app:layout_constraintBottom_toTopOf="@id/number_invoice_amount_tv_value"/>
+
+                <TextView
+                    android:id="@+id/number_invoice_tv_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16"
+                    android:textSize="12dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/invoice_dispatch_iv"
+                    app:layout_constraintBottom_toBottomOf="@id/invoice_dispatch_iv"/>
+
+                <TextView
+                    android:id="@+id/number_invoice_amount_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total amount"
+                    android:textSize="11dp"
+                    android:textColor="@color/colorBlueText"
+                    app:layout_constraintStart_toEndOf="@id/number_invoice_tv"
+                    app:layout_constraintBottom_toTopOf="@id/number_invoice_amount_tv_value"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_iv"/>
+
+                <TextView
+                    android:id="@+id/number_invoice_amount_tv_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="$ 48000"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/number_invoice_amount_tv"
+                    app:layout_constraintBottom_toBottomOf="@id/invoice_dispatch_iv"
+                app:layout_constraintEnd_toStartOf="@id/arrow_iv"/>
+
+                <ImageView
+                    android:id="@+id/arrow_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dotted_line"
+                    app:layout_constraintTop_toBottomOf="@id/invoice_dispatch_iv"
+                    android:layout_marginTop="10dp"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/payment_recived_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/invoice_dispatch_rl"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="12dp">
+
+                <ImageView
+                    android:id="@+id/payment_recived_iv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/payment_received" />
+                <TextView
+                    android:id="@+id/payment_recived"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Received"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/payment_recived_iv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_iv_payment"/>
+
+                <TextView
+                    android:id="@+id/number_payment_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number of payments"
+                    android:textSize="11dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/colorBlueText"
+                    app:layout_constraintStart_toEndOf="@id/payment_recived_iv"
+                    app:layout_constraintBottom_toTopOf="@id/number_payment_amount_tv_value"/>
+
+                <TextView
+                    android:id="@+id/number_payment_tv_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"
+                    android:textSize="12dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/payment_recived_iv"
+                    app:layout_constraintBottom_toBottomOf="@id/payment_recived_iv"/>
+
+                <TextView
+                    android:id="@+id/number_payment_amount_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total amount"
+                    android:textSize="11dp"
+                    android:textColor="@color/colorBlueText"
+                    app:layout_constraintStart_toEndOf="@id/number_payment_tv"
+                    app:layout_constraintBottom_toTopOf="@id/number_payment_amount_tv_value"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_iv_payment"/>
+
+                <TextView
+                    android:id="@+id/number_payment_amount_tv_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="$ 32000"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/number_payment_amount_tv"
+                    app:layout_constraintBottom_toBottomOf="@id/payment_recived_iv"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_iv_payment"/>
+
+                <ImageView
+                    android:id="@+id/arrow_iv_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dotted_line"
+                    app:layout_constraintTop_toBottomOf="@id/payment_recived_iv"
+                    android:layout_marginTop="10dp"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/payment_awaited_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/payment_recived_rl"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="12dp">
+
+                <ImageView
+                    android:id="@+id/payment_awaited_iv"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/payment_await" />
+                <TextView
+                    android:id="@+id/payment_awaited"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Awaited"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/payment_awaited_iv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_iv_payment_awaited"/>
+
+                <TextView
+                    android:id="@+id/amount_payment_awaited_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:textSize="11dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/colorBlueText"
+                    app:layout_constraintStart_toEndOf="@id/payment_awaited_iv"
+                    app:layout_constraintBottom_toTopOf="@id/amount_payment_awaited_tv_value"/>
+
+                <TextView
+                    android:id="@+id/amount_payment_awaited_tv_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 16000"
+                    android:textSize="12dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@id/payment_awaited_iv"
+                    app:layout_constraintBottom_toBottomOf="@id/payment_awaited_iv"/>
+
+                <ImageView
+                    android:id="@+id/arrow_iv_payment_awaited"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dotted_line"
+                    app:layout_constraintTop_toBottomOf="@id/payment_awaited_iv"
+                    android:layout_marginTop="10dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:fillViewport="true"
+                android:layout_below="@id/payment_awaited_rl"
+                android:layout_alignParentBottom="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/create_invoice_cv"
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    android:layout_gravity="center_vertical"
+                    app:cardBackgroundColor="@color/colorOrange"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginStart="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:layout_margin="15dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/dash_create_invoice_icon"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Create New Invoice"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"
+                            android:layout_marginTop="10dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_gravity="center_vertical"
+                        app:cardBackgroundColor="@color/colorGreen"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginStart="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:layout_margin="15dp">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/dash_dispatch_invoice"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dispatch Saved Invoice"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/manage_template_cv"
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_gravity="center_vertical"
+                        app:cardBackgroundColor="@color/colorYellow"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginStart="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:layout_margin="15dp">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/dash_manage_template"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Manage Templates"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_gravity="center_vertical"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginStart="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:layout_margin="15dp">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/dash_reminder"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Send Reminders"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/view_reports_cv"
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        android:layout_gravity="center_vertical"
+                        app:cardBackgroundColor="@color/colorGreen"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:layout_margin="15dp">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/dash_view_report"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="View Reports"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

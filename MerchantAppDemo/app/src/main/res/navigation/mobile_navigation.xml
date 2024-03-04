@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.merchantdemo.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_manage_templates"
+        android:name="com.example.merchantdemo.ui.manageTemplates.ManageTemplatesFragment"
+        android:label="@string/menu_manage_templates"
+        tools:layout="@layout/fragment_manage_templates">
+
+        <action
+            android:id="@+id/action_navManageTemplates_to_navCreateTemplate"
+            app:destination="@id/nav_create_Template" />
+    </fragment>
+<!--    android:label="@string/menu_manage_templates"-->
+
+    <fragment
+        android:id="@+id/nav_create_invoice"
+        android:name="com.example.merchantdemo.ui.createInvoice.CreateInvoiceFragment"
+        android:label="@string/menu_create_invoice"
+        tools:layout="@layout/fragment_create_invoice">
+
+    <action
+        android:id="@+id/action_navCreateInvoice_to_navViewInvoice"
+        app:destination="@id/nav_view_invoice" />
+    </fragment>
+<!--    android:label="@string/menu_create_invoice"-->
+
+    <fragment
+        android:id="@+id/nav_reports"
+        android:name="com.example.merchantdemo.ui.reports.ReportsFragment"
+        android:label="@string/menu_reports"
+        tools:layout="@layout/fragment_reports">
+        <action
+            android:id="@+id/action_navReports_to_navViewInvoice"
+            app:destination="@id/nav_view_invoice" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_create_Template"
+        android:name="com.example.merchantdemo.ui.manageTemplates.CreateTemplateFragment"
+        android:label="@string/menu_create_template"
+        tools:layout="@layout/fragment_create_template">
+        <argument
+            android:name="dataPath"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_view_invoice"
+        android:name="com.example.merchantdemo.ui.viewInvoice.ViewInvoiceFragment"
+        android:label="@string/menu_view_invoice"
+        tools:layout="@layout/fragment_view_invoice">
+        <argument
+            android:name="dataPath"
+            app:argType="string" />
+    </fragment>
+<!--    android:label="@string/menu_reports"-->
+</navigation>

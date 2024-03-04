@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+android:padding="30dp"
+android:transitionName="transition_login"
+    android:scrollbars="none"
+    android:fillViewport="true"
+tools:context=".MainActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <!--<ImageView
+        android:id="@+id/login_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_person_24" />-->
+
+
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/profile_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appname"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/login_profile"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back"
+            android:textColor="@color/colorBlue"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/user_detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profile_layout"
+        app:layout_constraintBottom_toTopOf="@id/signup">
+
+
+<!--        &lt;!&ndash;<com.hbb20.CountryCodePicker-->
+<!--            android:id="@+id/login_country_code_picker"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/black_border"-->
+<!--            android:padding="7dp"-->
+<!--            app:ccp_autoDetectCountry="true"-->
+<!--            app:ccp_showFlag="true"-->
+<!--            app:ccp_showFullName="true"-->
+<!--            app:ccp_showNameCode="true" />&ndash;&gt;-->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_phone_number"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/login_hint"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/colorDarkGrey"
+            app:boxStrokeWidthFocused="1dp"
+            app:endIconMode="custom"
+            app:endIconTint="@color/white"
+            app:endIconTintMode="multiply"
+            app:hintTextColor="@color/black"
+            app:endIconDrawable="@drawable/login_user_35"
+            app:boxCornerRadiusBottomEnd="28dp"
+            app:boxCornerRadiusBottomStart="28dp"
+            app:boxCornerRadiusTopEnd="28dp"
+            app:boxCornerRadiusTopStart="28dp">
+
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_phone_number_editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@null"
+                android:singleLine="true"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_phone_number"
+            android:hint="@string/login_pwd"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/colorDarkGrey"
+            app:boxStrokeWidthFocused="1dp"
+            app:hintTextColor="@color/black"
+            app:endIconMode="custom"
+            app:endIconTint="@color/white"
+            app:endIconTintMode="multiply"
+            app:endIconDrawable="@drawable/login_pass_35"
+            app:boxCornerRadiusBottomEnd="28dp"
+            app:boxCornerRadiusBottomStart="28dp"
+            app:boxCornerRadiusTopEnd="28dp"
+            app:boxCornerRadiusTopStart="28dp"
+            android:layout_marginTop="15dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_password_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:password="true"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+            <CheckBox
+                android:id="@+id/remember_me"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorBlue"
+                android:text="@string/remember_me"
+                android:textSize="11dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/login_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/letTheUserLogIn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/remember_me"
+            android:layout_marginTop="30dp"
+            app:backgroundTint="@color/colorBlue"
+            android:onClick="letTheUserLoggedIn"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="45dp"
+            android:paddingEnd="45dp"
+            app:cornerRadius="45dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/letTheUserLogIn"
+            android:background="#00000000"
+            android:layout_centerHorizontal="true"
+            android:text="@string/forget_pwd"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:textSize="11dp"/>
+<!--        &lt;!&ndash;                android:onClick="callForgetPassword"&ndash;&gt;-->
+
+
+
+
+
+
+<!--        &lt;!&ndash;<RelativeLayout-->
+<!--            android:id="@+id/login_progress_bar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:background="@drawable/white_circle"-->
+<!--            android:elevation="8dp"-->
+<!--            android:padding="20dp"-->
+<!--            android:visibility="gone">-->
+
+
+<!--            <ProgressBar-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_centerInParent="true" />-->
+
+
+<!--        </RelativeLayout>&ndash;&gt;-->
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#00000000"
+        android:text="@string/signup_text"
+        android:textSize="11dp"
+        android:gravity="bottom"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!--        android:onClick="callSignUpFromLogin"-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+

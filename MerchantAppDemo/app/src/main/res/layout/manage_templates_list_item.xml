@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/template_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/merchant_logo"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        android:layout_toStartOf="@id/edit_merchant_template"
+        android:maxLines="1"/>
+
+    <TextView
+        android:id="@+id/merchant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/merchant_logo"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
+        android:layout_alignBottom="@id/merchant_logo"
+        android:layout_toStartOf="@id/edit_merchant_template"
+        android:maxLines="2"/>
+
+    <ImageView
+        android:id="@+id/merchant_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"/>
+
+    <ImageView
+        android:id="@+id/edit_merchant_template"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ci_edit"
+        android:layout_toLeftOf="@id/delete_merchant_template"
+        android:layout_marginEnd="15dp"
+        android:layout_alignBottom="@id/merchant_logo"
+        android:layout_alignTop="@id/merchant_logo"
+        android:padding="2.5dp"/>
+
+    <ImageView
+        android:id="@+id/delete_merchant_template"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@id/merchant_logo"
+        android:layout_alignTop="@id/merchant_logo"
+        android:src="@drawable/ci_delete"
+        android:layout_toLeftOf="@id/arrow_merchant_template"
+        android:layout_marginEnd="15dp"
+        android:padding="2.5dp"/>
+
+    <ImageView
+        android:id="@+id/arrow_merchant_template"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@id/merchant_logo"
+        android:layout_alignTop="@id/merchant_logo"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:layout_alignParentRight="true"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorlightgrey"
+        android:layout_below="@id/merchant_logo"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"/>
+
+</RelativeLayout>

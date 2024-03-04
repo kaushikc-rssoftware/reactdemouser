@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.manageTemplates.ManageTemplatesFragment">
+
+    <TextView
+        android:id="@+id/add_template_hint_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Please create your first template"
+        android:layout_centerInParent="true"
+        android:textColorHint="@color/colorGreyText"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/manageTemplates_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.merchantdemo.customDesign.MovableFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_baseline_add_24"
+        android:translationX="-10dp"
+        android:translationY="-30dp"
+        app:backgroundTint="@color/colorBlue"
+        app:fabSize="normal"
+        app:maxImageSize="48dp"
+        app:tint="@color/white" />
+
+</RelativeLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.reports.ReportsFragment"
+    android:background="@color/white"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:iconifiedByDefault="false"
+            android:background="@drawable/circle_shape_outline"
+            app:searchIcon="@drawable/ic_baseline_search_24"
+            app:closeIcon="@drawable/ic_baseline_close_24"
+            android:theme="@style/ThemeOverlay.SearchView"
+            android:layout_marginTop="10dp"
+            app:queryHint="@string/text_hint_search_view"
+            android:layout_toStartOf="@id/report_calender"
+            android:layout_marginEnd="15dp" />
+
+        <ImageView
+            android:id="@+id/report_calender"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/dash_cal"
+            android:layout_alignTop="@id/searchView"
+            android:layout_alignBottom="@id/searchView"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/date_filter_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/searchView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorGreyText"
+            android:textSize="12dp"/>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/date_filter_tv"
+            android:background="@color/colorlightgrey"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/report_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view"/>
+
+</RelativeLayout>
